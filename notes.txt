@@ -19,3 +19,81 @@ Jumps to 0x7C00
 YOUR CODE STARTS RUNNING
 
 That first 512 bytes is called the boot sector.
+
+
+
+Our bootloader's only job should be:
+Start the CPU.
+Load the kernel into memory.
+Jump to the kernel.
+
+
+BIOS
+
+↓
+
+GRUB
+
+↓
+
+Our Kernel
+
+↓
+
+Drivers
+
+↓
+
+Memory
+
+↓
+
+Shell
+
+
+
+
+
+kernel.c
+     │
+     ▼
+Preprocessor
+     │
+     ▼
+Compiler
+     │
+     ▼
+Assembler
+     │
+     ▼
+Object File (.o)
+     │
+     ▼
+Linker
+     │
+     ▼
+kernel.bin
+
+
+0x00000 ─────────────────────────────
+        Interrupt Vector Table
+0x00400 ─────────────────────────────
+        BIOS Data Area
+0x00500 ─────────────────────────────
+        Free Memory
+...
+0x07C00 ─────────────────────────────
+        Stage 1 Bootloader
+...
+0x08000 ─────────────────────────────
+        Stage 2 Bootloader
+...
+0x90000 ─────────────────────────────
+        (We'll load the kernel here later)
+...
+0xA0000 ─────────────────────────────
+        VGA Graphics Memory
+0xB8000 ─────────────────────────────
+        VGA Text Buffer
+0x100000 ────────────────────────────
+        1 MB Boundary
