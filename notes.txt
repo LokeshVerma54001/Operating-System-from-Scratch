@@ -1,0 +1,21 @@
+Power On
+    │
+    ▼
+CPU starts executing BIOS firmware
+    │
+    ▼
+BIOS looks for a bootable device
+    │
+    ▼
+Reads the FIRST 512 BYTES into memory
+    │
+    ▼
+Copies them to address 0x7C00
+    │
+    ▼
+Jumps to 0x7C00
+    │
+    ▼
+YOUR CODE STARTS RUNNING
+
+That first 512 bytes is called the boot sector.
